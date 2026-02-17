@@ -13,9 +13,6 @@
         android:theme="@style/Theme.TempleSP">
 
         <activity
-            android:name=".SocialActivity"
-            android:exported="false" />
-        <activity
             android:name=".TempleInfoActivity"
             android:exported="false" />
         <activity
@@ -31,11 +28,21 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
             android:name=".LoginActivity"
             android:exported="false"/>
         <activity
             android:name=".MapActivity"
             android:exported="true" >
+=======
+            android:name=".MainActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".SocialActivity"
+            android:exported="true" >
+
+>>>>>>> origin/Social
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
