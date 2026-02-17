@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ยืนยัน"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCancelTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="ยกเลิก"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/img_monk_temple"
+                android:layout_marginBottom="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TempleSP"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ผู้ให้บริการ: TempleSP Corporation"
+                android:textColor="#888888"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="แอปพลิเคชันสำหรับจัดการและเข้าถึงข้อมูลของวัดได้อย่างง่ายดาย"
+                android:textAlignment="center"
+                android:textColor="#888888"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ประเทศ ไทย"
+                android:textColor="#888888"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="สิทธิ์การเข้าถึงที่ได้รับ"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ข้อมูลโปรไฟล์หลัก (ต้องระบุ)"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ข้อมูลผู้ใช้ของเพื่อนและข้อมูลระดับการติดต่อสื่อสาร (ต้องระบุ)"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="การส่งข้อความ (ต้องระบุ)"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EEEEEE"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="สำคัญ"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. ในการใช้บริการนี้ ผู้ใช้ต้องตรวจสอบว่าได้ดำเนินการผ่านผู้ให้บริการแจกจ่ายอย่างเป็นทางการของ LY Corporation ผู้ให้บริการนี้ไม่ต้องรับผิดชอบต่อความเสียหายใดๆ ที่เกิดจากการใช้บริการจากแหล่งอื่น...\n\n2. ข้อมูลส่วนบุคคลที่มอบให้แก่บริการนี้และข้อมูลส่วนบุคคลที่รวบรวมใหม่จะถูกนำไปใช้ภายใต้ความรับผิดชอบของผู้ให้บริการนี้ โปรดตรวจสอบรายละเอียดในข้อกำหนดการใช้บริการและนโยบายความเป็นส่วนตัว\n\n3. ข้อมูลโปรไฟล์ของคุณ ได้แก่ ชื่อที่ใช้ใน LINE, รูปโปรไฟล์, ข้อความสถานะ จะถูกแชร์ให้ผู้ให้บริการ"
+            android:textColor="#666666"
+            android:textSize="13sp"
+            android:lineSpacingExtra="4dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAllowLine"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="อนุญาต"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#06C755"
+            app:cornerRadius="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvCancelBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ยกเลิก"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp"
+            android:layout_marginBottom="32dp"/>
+
+    </LinearLayout>
+</ScrollView>

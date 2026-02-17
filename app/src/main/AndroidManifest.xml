@@ -13,7 +13,17 @@
         android:theme="@style/Theme.TempleSP">
 
         <activity
+<<<<<<< HEAD
             android:name=".ProfileActivity"
+=======
+            android:name=".LineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FacebookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SocialActivity"
+>>>>>>> Rain
             android:exported="false" />
         <activity
             android:name=".TempleInfoActivity"
@@ -31,11 +41,19 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
             android:name=".LoginActivity"
             android:exported="false"/>
         <activity
             android:name=".SocialActivity"
             android:exported="true" >
+=======
+            android:name=".ProfileActivity"
+            android:exported="false"/>
+        <activity
+                android:name=".LoginActivity"
+                android:exported="true" >
+>>>>>>> Rain
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
