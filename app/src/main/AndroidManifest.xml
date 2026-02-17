@@ -18,7 +18,7 @@
             android:name=".FacebookActivity"
             android:exported="false" />
         <activity
-            android:name=".SocialActivity"
+            android:name=".MapActivity"
             android:exported="false" />
         <activity
             android:name=".TempleInfoActivity"
@@ -27,7 +27,7 @@
             android:name=".CheckpointActivity"
             android:exported="false" />
         <activity
-            android:name=".MapActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -39,7 +39,7 @@
             android:name=".LoginActivity"
             android:exported="false"/>
         <activity
-            android:name=".ProfileActivity"
+            android:name=".SocialActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
