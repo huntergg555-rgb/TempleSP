@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#18191A"> <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_margin="24dp"
+    app:cardBackgroundColor="#242526"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_facebook"/> <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" ⇄ "
+            android:textColor="#B0B3B8"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="8dp"/>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/img_monk_temple" /> </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ก่อนหน้านี้คุณได้เข้าสู่ระบบ TempleSP ด้วย Facebook"
+            android:textColor="#E4E6EB"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="คุณต้องการดำเนินการต่อหรือไม่"
+            android:textColor="#B0B3B8"
+            android:textSize="14sp"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinueFb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="ดำเนินการต่อในชื่อ User"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:backgroundTint="#1877F2"
+            app:cornerRadius="6dp"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelFb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="ยกเลิก"
+            android:textColor="#E4E6EB"
+            android:textStyle="bold"
+            app:backgroundTint="#3A3B3C"
+            app:cornerRadius="6dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="เมื่อดำเนินการต่อ TempleSP จะได้รับสิทธิ์การเข้าถึงข้อมูลที่คุณแชร์อย่างต่อเนื่อง และ Meta จะบันทึกเมื่อ TempleSP เข้าถึงข้อมูลดังกล่าว\n\nนโยบายความเป็นส่วนตัวและข้อกำหนดในการให้บริการของ TempleSP"
+            android:textColor="#8A8D91"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+</RelativeLayout>
