@@ -5,14 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.templesp"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.templesp"
         minSdk = 34
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -48,4 +46,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("org.osmdroid:osmdroid-android:6.1.18")
     implementation("androidx.preference:preference:1.2.1")
+    
+    // เพิ่ม Glide สำหรับโหลดรูปภาพจากอินเทอร์เน็ต
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

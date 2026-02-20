@@ -4,36 +4,68 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
+    app:cardElevation="8dp"
     android:layout_margin="10dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iw_image"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:background="#EEE"/>
-
-        <TextView
-            android:id="@+id/iw_title"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"/>
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/iw_snippet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#666"
-            android:textSize="13sp"/>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iw_image"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:background="#EEE"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/iw_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:paddingEnd="24dp"/>
+
+            <TextView
+                android:id="@+id/iw_snippet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#666"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"/>
+
+            <Button
+                android:id="@+id/iw_btn_navigate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="นำทาง (Google Maps)"
+                android:textSize="12sp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                app:cornerRadius="8dp"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/iw_btn_close"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_close"
+            android:contentDescription="ปิด"
+            android:padding="4dp"/>
+            
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
