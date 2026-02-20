@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:background="#E6E990">
 
+    <!-- แผนที่ (เอาไว้ล่างสุดเพื่อให้ View อื่นทับได้) -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Header -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -13,14 +20,12 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="20dp"
-        android:layout_alignParentTop="true">
-
+        android:elevation="4dp">
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@android:drawable/ic_dialog_map"
             app:tint="#000000" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,88 +36,65 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_bg_rounded">
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:src="@android:drawable/ic_dialog_map"
-            app:tint="#000000"
-            android:background="@drawable/circle_white_bg"
-            android:padding="10dp"/>
-    </RelativeLayout>
-
+    <!-- ปุ่มปักหมุดสถานที่ (วางไว้ด้านล่าง เหนือ Bottom Bar) -->
     <LinearLayout
-        android:id="@+id/menuContainer"
+        android:id="@+id/markerButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/footer"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
         android:orientation="vertical"
-        android:paddingStart="40dp"
-        android:paddingEnd="40dp"
-        android:paddingBottom="20dp"> <Button
-        android:id="@+id/btnFood"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#FFFFFF"
-        android:text="ร้านอาหาร"
-        android:textColor="#000000"
-        android:gravity="start|center_vertical"
-        android:paddingStart="20dp"
-        android:drawableEnd="@android:drawable/ic_menu_myplaces"
-        android:drawableTint="#000000" />
-
-        <Button
-            android:id="@+id/btnBus"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="รถโดยสาร"
-            android:textColor="#000000"
-            android:gravity="start|center_vertical"
-            android:paddingStart="20dp"
-            android:drawableEnd="@android:drawable/ic_menu_directions"
-            android:drawableTint="#000000" />
-
-        <Button
-            android:id="@+id/btnAttraction"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="สถานที่เที่ยวใกล้เคียง"
-            android:textColor="#000000"
-            android:gravity="start|center_vertical"
-            android:paddingStart="20dp"
-            android:drawableEnd="@android:drawable/ic_menu_compass"
-            android:drawableTint="#000000" />
+        android:paddingHorizontal="40dp">
+        <Button android:id="@+id/btnFood" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginBottom="8dp" android:backgroundTint="#FFF" android:text="ร้านอาหาร" android:textColor="#000" android:gravity="start|center_vertical" android:paddingStart="20dp" android:drawableEnd="@android:drawable/ic_menu_myplaces" android:drawableTint="#000" android:elevation="4dp"/>
+        <Button android:id="@+id/btnBus" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginBottom="8dp" android:backgroundTint="#FFF" android:text="รถโดยสาร" android:textColor="#000" android:gravity="start|center_vertical" android:paddingStart="20dp" android:drawableEnd="@android:drawable/ic_menu_directions" android:drawableTint="#000" android:elevation="4dp"/>
+        <Button android:id="@+id/btnAttraction" android:layout_width="match_parent" android:layout_height="50dp" android:backgroundTint="#FFF" android:text="สถานที่เที่ยวใกล้เคียง" android:textColor="#000" android:gravity="start|center_vertical" android:paddingStart="20dp" android:drawableEnd="@android:drawable/ic_menu_compass" android:drawableTint="#000" android:elevation="4dp"/>
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/mapContainer"
+    <!-- Bottom Bar Section (เมนูเด้ง) -->
+    <RelativeLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        android:layout_above="@id/menuContainer"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp">
-
-        <org.osmdroid.views.MapView
-            android:id="@+id/mapview"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </androidx.cardview.widget.CardView>
-
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:background="#76C479" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/menuContainer"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="32dp"
+            app:cardElevation="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingVertical="6dp">
+                <LinearLayout
+                    android:id="@+id/hiddenMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <ImageView android:id="@+id/btnNavProfile" android:layout_width="52dp" android:layout_height="52dp" android:padding="12dp" android:src="@drawable/ic_person" app:tint="#000000" />
+                    <ImageView android:id="@+id/btnNavSocial" android:layout_width="52dp" android:layout_height="52dp" android:padding="12dp" android:src="@drawable/ic_social_group" app:tint="#000000" />
+                    <ImageView android:id="@+id/btnNavHome" android:layout_width="52dp" android:layout_height="52dp" android:padding="12dp" android:src="@drawable/ic_home" app:tint="#000000" />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/btnNavMap"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:padding="12dp"
+                    android:src="@android:drawable/ic_dialog_map"
+                    app:tint="#76C479" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </RelativeLayout>

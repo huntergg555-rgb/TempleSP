@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -47,6 +48,6 @@ dependencies {
     implementation("org.osmdroid:osmdroid-android:6.1.18")
     implementation("androidx.preference:preference:1.2.1")
     
-    // เพิ่ม Glide สำหรับโหลดรูปภาพจากอินเทอร์เน็ต
-    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.glide)
+    kapt(libs.glide.compiler)
 }

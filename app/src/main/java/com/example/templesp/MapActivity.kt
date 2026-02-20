@@ -3,7 +3,6 @@ package com.example.templesp
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -11,6 +10,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -55,70 +55,90 @@ class MapActivity : AppCompatActivity() {
         
         val startPoint = GeoPoint(13.9312, 100.4715)
         map.controller.setCenter(startPoint)
-        map.controller.setZoom(15.0)
+        map.controller.setZoom(14.5)
 
-        // หมุดหลัก วัดสะพานสูง (พร้อมรูปจริงจากเน็ต)
-        val mainMarker = createMarker(
-            startPoint, 
-            "วัดสะพานสูง", 
-            "นมัสการหลวงปู่เอี่ยม ปฐมนาม\nแหล่งกำเนิดตะกรุดมหาโสฬสมงคล", 
-            R.drawable.temple, 
-            null,
-            "https://paimon-travel.com/wp-content/uploads/2023/10/Wat-Saphan-Sung.jpg"
-        )
-        val mainIcon = resizeMarkerIcon(R.drawable.temple, 100, 100)
-        if (mainIcon != null) mainMarker.icon = mainIcon
+        // หมุดหลัก วัดสะพานสูง
+        createMarker(startPoint, "วัดสะพานสูง", "นมัสการหลวงปู่เอี่ยม ปฐมนาม\nแหล่งกำเนิดตะกรุดมหาโสฬสมงคล", null, R.drawable.temple, null, 55)
 
-        btnFood.setOnClickListener {
-            toggleMarkers(foodMarkers) {
-                foodMarkers.add(createMarker(GeoPoint(13.93366, 100.47525), "บ้านสวนอิงน้ำ", "ริมคลอง บรรยากาศดี", R.drawable.food_ingnam, R.drawable.ic_restaurant))
-                foodMarkers.add(createMarker(GeoPoint(13.92429, 100.47183), "สิมิลันโภชนา", "อาหารทะเลสด รสเด็ด", R.drawable.food_similan, R.drawable.ic_restaurant))
-                foodMarkers.add(createMarker(GeoPoint(13.92733, 100.48232), "คำโต คิชเช่น", "คาเฟ่กระต่ายน่ารัก", R.drawable.food_kumtoh, R.drawable.ic_restaurant))
-            }
+        btnFood.setOnClickListener { toggleMarkers(foodMarkers, "food") }
+        btnBus.setOnClickListener { toggleMarkers(busMarkers, "bus") }
+        btnAttraction.setOnClickListener { toggleMarkers(attractionMarkers, "attraction") }
+
+        // ระบบเมนูเด้ง
+        val hiddenMenu = findViewById<LinearLayout>(R.id.hiddenMenu)
+        val btnNavMap = findViewById<ImageView>(R.id.btnNavMap)
+        val btnNavHome = findViewById<ImageView>(R.id.btnNavHome)
+        val btnNavSocial = findViewById<ImageView>(R.id.btnNavSocial)
+        val btnNavProfile = findViewById<ImageView>(R.id.btnNavProfile)
+
+        btnNavMap.setOnClickListener {
+            hiddenMenu.visibility = if (hiddenMenu.visibility == View.GONE) View.VISIBLE else View.GONE
         }
 
-        btnBus.setOnClickListener {
-            toggleMarkers(busMarkers) {
-                busMarkers.add(createMarker(GeoPoint(13.9315, 100.4705), "ป้ายรถเมล์หน้าวัดสะพานสูง", "สาย 166, 505 และรถตู้หลายสาย", null, R.drawable.ic_bus))
-                busMarkers.add(createMarker(GeoPoint(13.9319, 100.4710), "วินมอเตอร์ไซค์ หน้าวัด", "บริการรับ-ส่ง เข้าซอยและพื้นที่ใกล้เคียง", null, R.drawable.ic_motorcycle))
-            }
-        }
-
-        btnAttraction.setOnClickListener {
-            toggleMarkers(attractionMarkers) {
-                // เพิ่มสถานที่ท่องเที่ยวพร้อม "URL รูปภาพจริง"
-                attractionMarkers.add(createMarker(GeoPoint(13.9128, 100.4897), "วัดปรมัยยิกาวาส (เกาะเกร็ด)", "ชมเจดีย์เอียง สัญลักษณ์ของเกาะเกร็ด", null, R.drawable.ic_attraction, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Wat_Poramaiyikawas_01.jpg/800px-Wat_Poramaiyikawas_01.jpg"))
-                attractionMarkers.add(createMarker(GeoPoint(13.9247, 100.4912), "วัดกู้ (พระนางเรือล่ม)", "วัดสำคัญทางประวัติศาสตร์ริมแม่น้ำเจ้าพระยา", null, R.drawable.ic_attraction, "https://thailandtourismdirectory.go.th/th/info/attraction/detail/itemid/3652/attachment/2"))
-                attractionMarkers.add(createMarker(GeoPoint(13.9105, 100.4905), "วัดบ่อ", "วัดเก่าแก่ใจกลางเมืองปากเกร็ด", null, R.drawable.ic_attraction, "https://paimon-travel.com/wp-content/uploads/2023/10/Wat-Bo.jpg"))
-                map.controller.animateTo(GeoPoint(13.9180, 100.4800))
-                map.controller.setZoom(13.5)
-            }
-        }
+        btnNavHome.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+        btnNavSocial.setOnClickListener { startActivity(Intent(this, SocialActivity::class.java)) }
+        btnNavProfile.setOnClickListener { startActivity(Intent(this, ProfileActivity::class.java)) }
     }
 
-    private fun toggleMarkers(markerList: ArrayList<Marker>, addLogic: () -> Unit) {
+    private fun toggleMarkers(markerList: ArrayList<Marker>, type: String) {
         if (markerList.isNotEmpty()) {
             markerList.forEach { map.overlays.remove(it) }
             markerList.clear()
         } else {
-            addLogic()
+            when (type) {
+                "food" -> addFoodMarkers()
+                "bus" -> addBusMarkers()
+                "attraction" -> addAttractionMarkers()
+            }
         }
         map.invalidate()
     }
 
-    private fun createMarker(point: GeoPoint, title: String, snippet: String, imageRes: Int?, iconRes: Int? = null, imageUrl: String? = null): Marker {
+    private fun addFoodMarkers() {
+        foodMarkers.add(createMarker(GeoPoint(13.93366, 100.47525), "บ้านสวนอิงน้ำ", "ร้านอาหารริมคลอง บรรยากาศดี", null, R.drawable.ic_restaurant, null, 40))
+        foodMarkers.add(createMarker(GeoPoint(13.92429, 100.47183), "สิมิลันโภชนา", "อาหารทะเลสด รสเด็ด", null, R.drawable.ic_restaurant, null, 40))
+        foodMarkers.add(createMarker(GeoPoint(13.92733, 100.48232), "คำโต คิชเช่น", "คาเฟ่กระต่ายและอาหารไทย", null, R.drawable.ic_restaurant, null, 40))
+        foodMarkers.add(createMarker(GeoPoint(13.9385, 100.4580), "ก๋วยเตี๋ยวดูดี คลองพระอุดม", "ร้านก๋วยเตี๋ยวชื่อดังในพื้นที่", null, R.drawable.ic_restaurant, null, 40))
+        foodMarkers.add(createMarker(GeoPoint(13.9452, 100.4615), "ครัวจ่ากุ่ย", "อาหารป่า อาหารตามสั่งรสแซ่บ", null, R.drawable.ic_restaurant, null, 40))
+        map.controller.animateTo(GeoPoint(13.9350, 100.4650))
+    }
+
+    private fun addBusMarkers() {
+        busMarkers.add(createMarker(GeoPoint(13.9315, 100.4705), "ป้ายรถเมล์หน้าวัด", "จุดจอดรถเมล์และรถตู้", null, R.drawable.ic_bus, null, 40))
+        busMarkers.add(createMarker(GeoPoint(13.9319, 100.4710), "วินมอเตอร์ไซค์ หน้าวัด", "บริการรับ-ส่งพื้นที่คลองพระอุดม", null, R.drawable.ic_motorcycle, null, 40))
+        busMarkers.add(createMarker(GeoPoint(13.9410, 100.4620), "ท่าเรือคลองพระอุดม", "จุดต่อเรือข้ามฟากและท่องเที่ยว", null, R.drawable.ic_bus, null, 40))
+        busMarkers.add(createMarker(GeoPoint(13.9485, 100.4555), "คิวรถสองแถว แยกคลองพระอุดม", "รถไปปากเกร็ด-ราชพฤกษ์", null, R.drawable.ic_bus, null, 40))
+    }
+
+    private fun addAttractionMarkers() {
+        attractionMarkers.add(createMarker(GeoPoint(13.9128, 100.4897), "เกาะเกร็ด", "แหล่งท่องเที่ยวทางวัฒนธรรมชื่อดัง", null, R.drawable.ic_attraction, null, 40))
+        attractionMarkers.add(createMarker(GeoPoint(13.9382, 100.4545), "วัดอินทาราม", "วัดสวยริมคลองพระอุดม", null, R.drawable.ic_attraction, null, 40))
+        attractionMarkers.add(createMarker(GeoPoint(13.9455, 100.4725), "วัดสว่างอารมณ์", "ชมอุโบสถเก่าแก่และวิถีชาวบ้าน", null, R.drawable.ic_attraction, null, 40))
+        attractionMarkers.add(createMarker(GeoPoint(13.9247, 100.4912), "วัดกู้ (พระนางเรือล่ม)", "วัดสำคัญทางประวัติศาสตร์", null, R.drawable.ic_attraction, null, 40))
+        attractionMarkers.add(createMarker(GeoPoint(13.9105, 100.4905), "วัดบ่อ", "วัดเก่าแก่ใจกลางเมืองปากเกร็ด", null, R.drawable.ic_attraction, null, 40))
+        map.controller.animateTo(GeoPoint(13.9300, 100.4750))
+        map.controller.setZoom(13.8)
+    }
+
+    private fun createMarker(point: GeoPoint, title: String, snippet: String, imageRes: Int?, iconRes: Int?, imageUrl: String?, sizeDp: Int): Marker {
         val marker = Marker(map)
         marker.position = point
         marker.title = title
         marker.snippet = snippet
-        if (imageRes != null) marker.image = ContextCompat.getDrawable(this, imageRes)
-        if (iconRes != null) marker.icon = ContextCompat.getDrawable(this, iconRes)
         
-        // เก็บ URL รูปภาพไว้ใน relatedObject เพื่อเรียกใช้ใน InfoWindow
+        val resId = iconRes ?: R.drawable.temple
+        val drawable = ContextCompat.getDrawable(this, resId)
+        if (drawable is BitmapDrawable) {
+            val pixelSize = (sizeDp * resources.displayMetrics.density).toInt()
+            val scaledBitmap = Bitmap.createScaledBitmap(drawable.bitmap, pixelSize, pixelSize, false)
+            marker.icon = BitmapDrawable(resources, scaledBitmap)
+        } else {
+            marker.icon = drawable
+        }
+        
         marker.relatedObject = imageUrl
-        
         marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-        marker.infoWindow = MyInfoWindow(com.example.templesp.R.layout.window_info, map)
+        marker.infoWindow = MyInfoWindow(R.layout.window_info, map)
         map.overlays.add(marker)
         return marker
     }
@@ -129,24 +149,7 @@ class MapActivity : AppCompatActivity() {
             val marker = item as Marker
             val view = mView
             val img = view.findViewById<ImageView>(R.id.iw_image)
-            
-            val imageUrl = marker.relatedObject as? String
-            
-            if (imageUrl != null) {
-                // ใช้ Glide โหลดรูปภาพจริงจาก URL
-                img?.visibility = View.VISIBLE
-                Glide.with(this@MapActivity)
-                    .load(imageUrl)
-                    .placeholder(R.drawable.temple) // รูปสำรองระหว่างโหลด
-                    .error(R.drawable.temple)       // รูปกรณีโหลดพลาด
-                    .into(img!!)
-            } else if (marker.image != null) {
-                img?.visibility = View.VISIBLE
-                img?.setImageDrawable(marker.image)
-            } else {
-                img?.visibility = View.GONE
-            }
-            
+            img?.setImageResource(R.drawable.temple)
             view.findViewById<TextView>(R.id.iw_title)?.text = marker.title
             view.findViewById<TextView>(R.id.iw_snippet)?.text = marker.snippet
             view.findViewById<ImageButton>(R.id.iw_btn_close)?.setOnClickListener { marker.closeInfoWindow() }
@@ -154,20 +157,10 @@ class MapActivity : AppCompatActivity() {
                 val gmmIntentUri = Uri.parse("google.navigation:q=${marker.position.latitude},${marker.position.longitude}")
                 val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
                 mapIntent.setPackage("com.google.android.apps.maps")
-                if (mapIntent.resolveActivity(packageManager) != null) {
-                    startActivity(mapIntent)
-                } else {
-                    val browserUri = Uri.parse("https://www.google.com/maps/dir/?api=1&destination=${marker.position.latitude},${marker.position.longitude}")
-                    startActivity(Intent(Intent.ACTION_VIEW, browserUri))
-                }
+                startActivity(mapIntent)
             }
         }
         override fun onClose() {}
-    }
-
-    private fun resizeMarkerIcon(id: Int, w: Int, h: Int): Drawable? {
-        val d = ContextCompat.getDrawable(this, id)
-        return if (d is BitmapDrawable) BitmapDrawable(resources, Bitmap.createScaledBitmap(d.bitmap, w, h, false)) else null
     }
 
     override fun onResume() { super.onResume(); myLocationOverlay.enableMyLocation(); map.onResume() }

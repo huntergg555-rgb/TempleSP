@@ -14,23 +14,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // ผูกตัวแปรการ์ดข้อมูลต่างๆ
-        val cardNews1 = findViewById<CardView>(R.id.cardNews1)
-        val cardNews2 = findViewById<CardView>(R.id.cardNews2)
-        val cardFestival = findViewById<CardView>(R.id.cardFestival)
-
-        cardNews1.setOnClickListener { Toast.makeText(this, "เปิดงานประจำปี 1", Toast.LENGTH_SHORT).show() }
-        cardNews2.setOnClickListener { Toast.makeText(this, "เปิดงานประจำปี 2", Toast.LENGTH_SHORT).show() }
-        cardFestival.setOnClickListener { Toast.makeText(this, "เปิดงานวัดสะพานสูง", Toast.LENGTH_SHORT).show() }
+        // ผูกตัวแปรการ์ดข้อมูลต่างๆ (เหลือแค่ที่มีอยู่ใน XML)
+        findViewById<CardView>(R.id.cardNews1).setOnClickListener { 
+            Toast.makeText(this, "เปิดงานประจำปี", Toast.LENGTH_SHORT).show() 
+        }
+        
+        findViewById<CardView>(R.id.cardFestival).setOnClickListener { 
+            Toast.makeText(this, "เปิดงานวัดสะพานสูง", Toast.LENGTH_SHORT).show() 
+        }
 
         // --- ส่วนของการจัดการเมนูด้านล่าง ---
         val hiddenMenu = findViewById<LinearLayout>(R.id.hiddenMenu)
         val btnNavHome = findViewById<ImageView>(R.id.btnNavHome)
         val btnNavProfile = findViewById<ImageView>(R.id.btnNavProfile)
+        val btnNavSocial = findViewById<ImageView>(R.id.btnNavSocial)
+        val btnNavMap = findViewById<ImageView>(R.id.btnNavMap)
 
-        // เมื่อกดที่ไอคอนรูปบ้าน (หน้าปัจจุบัน)
+        // ปุ่มหลัก (Home) ทำหน้าที่เปิด/ปิดเมนู
         btnNavHome.setOnClickListener {
-            // เช็คว่าถ้ามันซ่อนอยู่ ให้เปิดโชว์ขึ้นมา แต่ถ้าเปิดอยู่แล้ว ให้ซ่อนกลับไป
             if (hiddenMenu.visibility == View.GONE) {
                 hiddenMenu.visibility = View.VISIBLE
             } else {
@@ -38,14 +39,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // เมื่อกดที่ไอคอนรูปโปรไฟล์ (ที่เพิ่งเด้งขึ้นมา)
+        // เชื่อมต่อแต่ละปุ่มในเมนูที่ซ่อนอยู่
         btnNavProfile.setOnClickListener {
-            // สั่งให้ซ่อนเมนูกลับไปก่อน (เพื่อความสวยงาม)
             hiddenMenu.visibility = View.GONE
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
 
-            // เปลี่ยนไปหน้า Profile
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
+        btnNavSocial.setOnClickListener {
+            hiddenMenu.visibility = View.GONE
+            startActivity(Intent(this, SocialActivity::class.java))
+        }
+
+        btnNavMap.setOnClickListener {
+            hiddenMenu.visibility = View.GONE
+            startActivity(Intent(this, MapActivity::class.java))
         }
     }
 }
