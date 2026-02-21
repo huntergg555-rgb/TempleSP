@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+<<<<<<< HEAD
     <queries>
         <package android:name="com.google.android.apps.maps" />
         <intent>
@@ -15,6 +16,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="replace" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+=======
+    <uses-permission android:name="android.permission.INTERNET"/>
+>>>>>>> Rain
 
     <application
         android:allowBackup="true"
@@ -26,22 +30,38 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TempleSP">
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> Rain
         <activity android:name=".LineActivity" android:exported="false" />
         <activity android:name=".FacebookActivity" android:exported="false" />
         <activity android:name=".SocialActivity" android:exported="false" />
         <activity android:name=".TempleInfoActivity" android:exported="false" />
         <activity android:name=".CheckpointActivity" android:exported="false" />
+<<<<<<< HEAD
         <activity android:name=".ProfileActivity" android:exported="false" />
         <activity android:name=".RegisterActivity" android:exported="false" />
         
         <!-- เปลี่ยน MainActivity ให้เป็น LAUNCHER -->
         <activity android:name=".MainActivity" android:exported="true">
+=======
+        <activity android:name=".MapActivity" android:exported="false" />
+        <activity android:name=".RegisterActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".ProfileActivity" android:exported="false"/>
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" >
+>>>>>>> Rain
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         
         <activity android:name=".LoginActivity" android:exported="false"/>
         
@@ -49,5 +69,26 @@
             android:name=".MapActivity"
             android:exported="false" />
     </application>
+=======
+>>>>>>> Rain
 
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
+    </application>
 </manifest>
