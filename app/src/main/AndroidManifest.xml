@@ -21,9 +21,6 @@
             android:name=".MapActivity"
             android:exported="false" />
         <activity
-            android:name=".TempleInfoActivity"
-            android:exported="false" />
-        <activity
             android:name=".CheckpointActivity"
             android:exported="false" />
         <activity
@@ -40,6 +37,9 @@
             android:exported="false"/>
         <activity
             android:name=".SocialActivity"
+            android:exported="false" />\
+        <activity
+            android:name=".TempleInfoActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
