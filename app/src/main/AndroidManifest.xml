@@ -31,6 +31,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.TempleSP">
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 =======
 
@@ -54,6 +55,37 @@
 
         <activity
             android:name=".LoginActivity"
+=======
+        <activity
+            android:name=".LineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FacebookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CheckpointActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".SocialActivity"
+            android:exported="false" />\
+        <activity
+            android:name=".TempleInfoActivity"
+>>>>>>> info
             android:exported="true" >
 >>>>>>> Rain
             <intent-filter>
