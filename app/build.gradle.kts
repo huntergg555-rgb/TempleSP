@@ -46,4 +46,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.facebook.android:facebook-login:latest.release")
+    implementation("com.linecorp.linesdk:linesdk:5.9.1")
 }

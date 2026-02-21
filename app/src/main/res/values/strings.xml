@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">TempleSP</string>
+    <string name="app_name">templeSP</string>
+
+    <string name="facebook_app_id">1227456632319364</string>
+    <string name="facebook_client_token">e456a950adf4cc7937436277373b81c0</string>
+    <string name="fb_login_protocol_scheme">fb1227456632319364</string>
 </resources>
