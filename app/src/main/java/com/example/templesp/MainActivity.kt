@@ -20,15 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-<<<<<<< HEAD
-        // ผูกตัวแปรการ์ดข้อมูลต่างๆ (เหลือแค่ที่มีอยู่ใน XML)
-        findViewById<CardView>(R.id.cardNews1).setOnClickListener { 
-            Toast.makeText(this, "เปิดงานประจำปี", Toast.LENGTH_SHORT).show() 
-        }
-        
-        findViewById<CardView>(R.id.cardFestival).setOnClickListener { 
-            Toast.makeText(this, "เปิดงานวัดสะพานสูง", Toast.LENGTH_SHORT).show() 
-=======
         // ผูกตัวแปรการ์ดข้อมูลต่างๆ
         val cardNews1 = findViewById<CardView>(R.id.cardNews1)
         val cardFestival = findViewById<CardView>(R.id.cardFestival)
@@ -53,20 +44,13 @@ class MainActivity : AppCompatActivity() {
                 "📅 27 ธ.ค. 68 - 5 ม.ค. 69 (10 วัน 10 คืน)",
                 "ทำบุญอุทิศถวายแด่บูรพาจารย์\nหลวงปู่เอี่ยม หลวงปู่กลิ่น หลวงปู่ทองสุข\n\n✨ ชมฟรี!! มหรสพตลอดงาน ✨\nพบกับศิลปินดังมากมาย เช่น:\n- ตั๊กแตน ชลดา\n- เปาวลี\n- แอน อรดี\n- สาวน้อยเพชรบ้านแพง\n- และอีกเพียบ!"
             )
->>>>>>> Rain
         }
 
         // --- ส่วนของการจัดการเมนูด้านล่าง ---
         val hiddenMenu = findViewById<LinearLayout>(R.id.hiddenMenu)
         val btnNavHome = findViewById<ImageView>(R.id.btnNavHome)
         val btnNavProfile = findViewById<ImageView>(R.id.btnNavProfile)
-        val btnNavSocial = findViewById<ImageView>(R.id.btnNavSocial)
-        val btnNavMap = findViewById<ImageView>(R.id.btnNavMap)
 
-<<<<<<< HEAD
-        // ปุ่มหลัก (Home) ทำหน้าที่เปิด/ปิดเมนู
-=======
->>>>>>> Rain
         btnNavHome.setOnClickListener {
             if (hiddenMenu.visibility == View.GONE) {
                 hiddenMenu.visibility = View.VISIBLE
@@ -75,27 +59,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-<<<<<<< HEAD
-        // เชื่อมต่อแต่ละปุ่มในเมนูที่ซ่อนอยู่
-        btnNavProfile.setOnClickListener {
-            hiddenMenu.visibility = View.GONE
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-        btnNavSocial.setOnClickListener {
-            hiddenMenu.visibility = View.GONE
-            startActivity(Intent(this, SocialActivity::class.java))
-        }
-
-        btnNavMap.setOnClickListener {
-            hiddenMenu.visibility = View.GONE
-            startActivity(Intent(this, MapActivity::class.java))
-=======
         btnNavProfile.setOnClickListener {
             hiddenMenu.visibility = View.GONE
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
->>>>>>> Rain
         }
     }
 

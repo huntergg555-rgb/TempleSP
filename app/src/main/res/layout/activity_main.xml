@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#E9ED9A">
 
-    <!-- Top Bar -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -13,15 +12,6 @@
         android:background="#78C274"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-<<<<<<< HEAD
-        android:paddingHorizontal="16dp"
-        android:elevation="4dp">
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_home"
-            app:tint="#000000" />
-=======
         android:padding="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -29,7 +19,6 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_home" />
->>>>>>> Rain
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,157 +29,23 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-<<<<<<< HEAD
-    <!-- Bottom Bar Section (ปรับปรุงให้เห็นชัดขึ้น) -->
-    <RelativeLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:background="#76C479" />
-
-        <!-- Floating Menu Container -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/menuContainer"
-            android:layout_width="64dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="12dp"
-            app:cardBackgroundColor="#FFFFFF"
-            app:cardCornerRadius="32dp"
-            app:cardElevation="12dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingVertical="6dp">
-
-                <LinearLayout
-                    android:id="@+id/hiddenMenu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-                    <ImageView
-                        android:id="@+id/btnNavProfile"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_person"
-                        app:tint="#000000" />
-                    <ImageView
-                        android:id="@+id/btnNavSocial"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:padding="12dp"
-                        android:src="@drawable/ic_social_group"
-                        app:tint="#000000" />
-                    <ImageView
-                        android:id="@+id/btnNavMap"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
-                        android:padding="12dp"
-                        android:src="@android:drawable/ic_dialog_map"
-                        app:tint="#000000" />
-                </LinearLayout>
-
-                <!-- ปุ่มตัวเปิด (Icon ตามแต่ละหน้า) -->
-                <ImageView
-                    android:id="@+id/btnNavHome"
-                    android:layout_width="52dp"
-                    android:layout_height="52dp"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_home"
-                    app:tint="#76C479" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
-
-    <!-- Main Content -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottomBar"
-        android:layout_below="@id/topBar">
-=======
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintTop_toBottomOf="@+id/topBar">
 
->>>>>>> Rain
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-<<<<<<< HEAD
-            android:padding="20dp">
-=======
             android:padding="16dp">
 
->>>>>>> Rain
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ประชาสัมพันธ์"
                 android:textColor="#000000"
-<<<<<<< HEAD
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardNews1"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp"
-                android:layout_marginBottom="24dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/temple"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="งานประจำปี ๒๕๖๙"
-                        android:textColor="#000000"
-                        android:textAlignment="center"
-                        android:layout_marginTop="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="แนะนำช่วงเทศกาล"
-                android:textColor="#000000"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardFestival"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="16dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="12dp">
-=======
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -238,36 +93,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
->>>>>>> Rain
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
                         android:scaleType="centerCrop"
-<<<<<<< HEAD
-                        android:src="@drawable/temple"/>
-=======
                         android:src="@drawable/img_festival" />
->>>>>>> Rain
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="งานวัดสะพานสูง"
-<<<<<<< HEAD
-                        android:textColor="#000000"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:layout_marginTop="12dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <Space android:layout_width="match_parent" android:layout_height="80dp"/>
-=======
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
->>>>>>> Rain
         </LinearLayout>
     </ScrollView>
 

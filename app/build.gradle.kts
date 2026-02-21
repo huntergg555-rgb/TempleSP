@@ -45,14 +45,16 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-<<<<<<< HEAD
+    
+    // OSM Map
     implementation("org.osmdroid:osmdroid-android:6.1.18")
     implementation("androidx.preference:preference:1.2.1")
     
+    // Image Loading
     implementation(libs.glide)
     kapt(libs.glide.compiler)
-=======
-    implementation("com.facebook.android:facebook-login:latest.release")
+    
+    // Facebook & Line
+    implementation("com.facebook.android:facebook-login:17.0.0")
     implementation("com.linecorp.linesdk:linesdk:5.9.1")
->>>>>>> Rain
 }
