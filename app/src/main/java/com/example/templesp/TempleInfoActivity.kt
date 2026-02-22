@@ -1,25 +1,26 @@
-package com.example.templesp // เช็คให้ตรงกับชื่อ package ของคุณด้วยนะครับ
+package com.example.templesp
 
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 
-class TempleInfoActivity : AppCompatActivity() {
+class TempleInfoActivity : BaseNavActivity() {
+
+    override fun getCurrentIconRes(): Int = R.drawable.ic_temple
+    override fun getCurrentNavId(): Int = R.id.navIconTemple
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_temple_info)
+        setupPillNav()
 
-        // 1. ผูกตัวแปรกับ ID ของการ์ด
         val cardAmulet = findViewById<CardView>(R.id.cardAmulet)
         val cardBuddha = findViewById<CardView>(R.id.cardBuddha)
         val cardGuanYin = findViewById<CardView>(R.id.cardGuanYin)
         val cardTaKhian = findViewById<CardView>(R.id.cardTaKhian)
 
-        // 2. ดักจับการกดแต่ละปุ่ม แล้วส่งข้อมูล (หัวข้อ, รายละเอียด, รูปภาพ) ไปยังฟังก์ชัน
         cardAmulet.setOnClickListener {
             showDetailsDialog(
                 title = "เครื่องรางของขลัง",
@@ -36,7 +37,7 @@ class TempleInfoActivity : AppCompatActivity() {
                         "\n" +
                         " การสืบทอดวิชา\n" +
                         "สายตรงวัดสะพานสูง: ตำรับการสร้างและศิลปะพระปิดตาสายนี้ ได้รับการสืบทอดต่อมาโดยสุดยอดพระเกจิอาจารย์รุ่นหลังของวัดสะพานสูง คือ หลวงปู่กลิ่น และ หลวงปู่ทองสุข",
-                imageResId = R.drawable.pidta // เปลี่ยนเป็น R.drawable.ชื่อรูปของคุณ ในภายหลัง
+                imageResId = R.drawable.pidta
             )
         }
 
@@ -68,7 +69,7 @@ class TempleInfoActivity : AppCompatActivity() {
                         "คำสั่งเสียสุดท้าย: ก่อนมรณภาพท่านได้กล่าวกับศิษย์ว่า \"ถ้ามีเหตุทุกข์เกิดขึ้นให้ระลึกถึงท่านและเอ่ยชื่อท่านก็แล้วกัน\"\n" +
                         "\n" +
                         "การสักการะแก้บน: ประชาชนนิยมมากราบขอพรและบนบานศาลกล่าวที่รูปหล่อของท่าน โดยมักจะนำ \"กระทงใส่ดอกไม้เจ็ดสี\" มาถวาย",
-                imageResId = R.drawable.eaim // เปลี่ยนเป็น R.drawable.ชื่อรูปของคุณ ในภายหลัง
+                imageResId = R.drawable.eaim
             )
         }
 
@@ -93,7 +94,7 @@ class TempleInfoActivity : AppCompatActivity() {
                         "เชื่อกันว่าพระแม่กวนอิมเป็นเทพแห่งความเมตตากรุณา การมากราบไหว้จะช่วยเสริมสิริมงคลในชีวิต\n" +
                         "\n" +
                         "เรื่องที่นิยมขอพร: ความเมตตามหานิยม, ความสำเร็จในหน้าที่การงานและการทำธุรกิจ, ขอให้แคล้วคลาดปลอดภัย และช่วยปัดเป่าโรคภัยไข้เจ็บ",
-                imageResId =R.drawable.im_m // เปลี่ยนเป็น R.drawable.ชื่อรูปของคุณ ในภายหลัง
+                imageResId =R.drawable.im_m
             )
         }
 
@@ -124,29 +125,24 @@ class TempleInfoActivity : AppCompatActivity() {
                         "มหาธะนัง ปูเชมิ\n" +
                         "\n" +
                         "(เมื่อสวดจบ ให้ตั้งจิตอธิษฐานขอความสำเร็จในสิ่งต่างๆ ที่ปรารถนา)",
-                imageResId = R.drawable.takain // เปลี่ยนเป็น R.drawable.ชื่อรูปของคุณ ในภายหลัง
+                imageResId = R.drawable.takain
             )
         }
     }
 
-    // 3. ฟังก์ชันสร้างป๊อปอัปแบบมีรูปภาพ
     private fun showDetailsDialog(title: String, details: String, imageResId: Int) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(title)
 
-        // ดึงหน้าตา Layout ที่เราออกแบบไว้มาใช้
         val inflater = layoutInflater
         val dialogView = inflater.inflate(R.layout.dialog_custom_info, null)
 
-        // หา ImageView และ TextView ในป๊อปอัป
         val imageView = dialogView.findViewById<ImageView>(R.id.dialogImage)
         val textView = dialogView.findViewById<TextView>(R.id.dialogDetails)
 
-        // นำรูปภาพและข้อความที่ส่งมา ใส่เข้าไปในป๊อปอัป
         imageView.setImageResource(imageResId)
         textView.text = details
 
-        // ประกอบร่าง
         builder.setView(dialogView)
         builder.setPositiveButton("ปิด") { dialog, _ ->
             dialog.dismiss()

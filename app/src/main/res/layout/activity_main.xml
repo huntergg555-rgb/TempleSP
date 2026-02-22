@@ -32,7 +32,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintBottom_toTopOf="@+id/navPillContainer"
         app:layout_constraintTop_toBottomOf="@+id/topBar">
 
         <LinearLayout
@@ -110,36 +110,12 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/hiddenMenu"
+    <include
+        layout="@layout/layout_bottom_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:elevation="8dp"
-        android:padding="8dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-        <ImageView
-            android:id="@+id/btnNavProfile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_person" />
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#78C274"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent">
-        <ImageView
-            android:id="@+id/btnNavHome"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_home" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

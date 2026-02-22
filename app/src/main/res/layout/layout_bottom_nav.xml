@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Floating pill navigation: แสดงไอคอนหน้าปัจจุบัน กดแล้วขยายให้เลือกหน้าอื่น -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/navPillContainer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|center_horizontal"
+    android:layout_marginBottom="16dp">
+
+    <LinearLayout
+        android:id="@+id/navPillContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_pill_nav"
+        android:elevation="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp">
+
+        <!-- ไอคอนที่ซ่อนอยู่ (จะแสดงเมื่อกด) -->
+        <LinearLayout
+            android:id="@+id/hiddenNavIcons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/navIconHome"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_circle_ripple"
+                android:clickable="true"
+                android:contentDescription="หน้าหลัก"
+                android:padding="10dp"
+                android:src="@drawable/ic_home" />
+
+            <ImageView
+                android:id="@+id/navIconMap"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_circle_ripple"
+                android:clickable="true"
+                android:contentDescription="แผนที่"
+                android:padding="10dp"
+                android:src="@drawable/ic_map" />
+
+            <ImageView
+                android:id="@+id/navIconTemple"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_circle_ripple"
+                android:clickable="true"
+                android:contentDescription="ข้อมูลวัด"
+                android:padding="10dp"
+                android:src="@drawable/ic_temple" />
+
+            <ImageView
+                android:id="@+id/navIconSocial"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_circle_ripple"
+                android:clickable="true"
+                android:contentDescription="โซเชียล"
+                android:padding="10dp"
+                android:src="@drawable/ic_social_group" />
+
+            <ImageView
+                android:id="@+id/navIconCheckpoint"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_circle_ripple"
+                android:clickable="true"
+                android:contentDescription="เช็คพ้อย"
+                android:padding="10dp"
+                android:src="@drawable/ic_checkpoint" />
+
+            <ImageView
+                android:id="@+id/navIconProfile"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="4dp"
+                android:background="@drawable/bg_circle_ripple"
+                android:clickable="true"
+                android:contentDescription="โปรไฟล์"
+                android:padding="10dp"
+                android:src="@drawable/ic_person" />
+        </LinearLayout>
+
+        <!-- ไอคอนหลักที่แสดงตลอด (หน้าปัจจุบัน) -->
+        <ImageView
+            android:id="@+id/navMainIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_circle_green"
+            android:contentDescription="เมนู"
+            android:padding="12dp"
+            android:src="@drawable/ic_home" />
+
+    </LinearLayout>
+</FrameLayout>

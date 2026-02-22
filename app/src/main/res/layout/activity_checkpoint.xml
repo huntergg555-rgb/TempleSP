@@ -1,10 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CheckpointActivity">
+    android:background="#1B1B1B">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Scrollable + Zoomable container for aerial image + pins -->
+    <HorizontalScrollView
+        android:id="@+id/hScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <ScrollView
+            android:id="@+id/vScroll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <FrameLayout
+                android:id="@+id/imageContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <!-- Aerial photo of the temple -->
+                <ImageView
+                    android:id="@+id/aerialImage"
+                    android:layout_width="1200dp"
+                    android:layout_height="880dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vadsaparn" />
+
+                <!-- ===== จุดที่ 1: ศาลเจ้าแม่กวนอิม ===== -->
+                <ImageView
+                    android:id="@+id/pin1"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="1040dp"
+                    android:layout_marginTop="470dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="ศาลเจ้าแม่กวนอิม" />
+
+                <!-- ===== จุดที่ 2: หลวงปู่เอี่ยมธุดง ===== -->
+                <ImageView
+                    android:id="@+id/pin2"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="950dp"
+                    android:layout_marginTop="450dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="หลวงปู่เอี่ยมธุดง" />
+
+                <!-- ===== จุดที่ 3: ท่าเรือ & ให้อาหารปลา ===== -->
+                <ImageView
+                    android:id="@+id/pin3"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="700dp"
+                    android:layout_marginTop="510dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="ท่าเรือ" />
+
+                <!-- ===== จุดที่ 4: ตลาด ===== -->
+                <ImageView
+                    android:id="@+id/pin4"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="470dp"
+                    android:layout_marginTop="120dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="ตลาด" />
+
+                <!-- ===== จุดที่ 5: เจดีย์ ===== -->
+                <ImageView
+                    android:id="@+id/pin5"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="620dp"
+                    android:layout_marginTop="290dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="เจดีย์" />
+
+                <!-- ===== จุดที่ 6: สะพานสูง ===== -->
+                <ImageView
+                    android:id="@+id/pin6"
+                    android:layout_width="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="260dp"
+                    android:layout_marginTop="430dp"
+                    android:src="@drawable/ic_pin"
+                    android:contentDescription="สะพานสูง" />
+
+            </FrameLayout>
+        </ScrollView>
+    </HorizontalScrollView>
+
+    <!-- Header bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CC1B5E20"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="12dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="6dp"
+            android:src="@drawable/ic_close"
+            android:contentDescription="กลับ"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:text="จุดท่องเที่ยวในวัด"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtPinCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/6"
+            android:textColor="#FFD700"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Progress bar -->
+    <LinearLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CC2E7D32"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🏆 สะสมแสตมป์"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
+        <ProgressBar
+            android:id="@+id/stampProgress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="12dp"
+            android:max="6"
+            android:progress="0"
+            android:progressDrawable="@drawable/progress_stamp" />
+
+        <TextView
+            android:id="@+id/txtProgressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="เที่ยวแล้ว 0/6 จุด"
+            android:textColor="#FFD700"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Hint at bottom -->
+    <TextView
+        android:id="@+id/txtHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_pill_nav"
+        android:elevation="8dp"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text="👆 แตะหมุดเพื่อดูข้อมูล"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <!-- Info card (hidden initially, slides up when pin tapped) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/infoCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="12dp"
+        android:translationY="600dp"
+        android:visibility="gone"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Close + Title row -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Pin number badge -->
+                <TextView
+                    android:id="@+id/infoBadge"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_circle_green"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/infoTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/infoBadge"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="12dp"
+                    android:text="พระอุโบสถ"
+                    android:textColor="#1B5E20"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/btnCloseCard"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_close"
+                    android:contentDescription="ปิด"
+                    app:tint="#9E9E9E" />
+            </RelativeLayout>
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/infoDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:lineSpacingExtra="4dp"
+                android:text="รายละเอียด..."
+                android:textColor="#424242"
+                android:textSize="15sp" />
+
+            <!-- Highlight tag -->
+            <TextView
+                android:id="@+id/infoHighlight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_pill_nav"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="⭐ ไฮไลท์"
+                android:textColor="#1B5E20"
+                android:textSize="13sp" />
+
+            <!-- Check-in button -->
+            <TextView
+                android:id="@+id/btnCheckIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_checkin_button"
+                android:gravity="center"
+                android:paddingVertical="14dp"
+                android:text="📍 เช็คอินที่นี่"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

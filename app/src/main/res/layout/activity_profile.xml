@@ -33,46 +33,20 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bottomBar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:background="#76C479"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/btnNavProfile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_person" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/hiddenMenu"
+    <!-- Floating Pill Navigation -->
+    <include
+        layout="@layout/layout_bottom_nav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/bottomBar"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="#FFFFFF"
-        android:elevation="8dp"
-        android:padding="8dp"
-        android:visibility="gone">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp" />
 
-        <ImageView
-            android:id="@+id/btnNavHome"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_home"
-            android:padding="0dp"
-            android:background="@android:color/transparent" />
-    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/hiddenMenu"
+        android:layout_above="@id/navPillContainer"
         android:layout_below="@id/topBar">
 
         <LinearLayout
